@@ -1,8 +1,10 @@
 #!/usr/bin/env -S uv run --script
 
-from click import option, group, echo, confirm, Path as ClickPath
+from click import option, group, echo, confirm, Path as ClickPath, prompt
 from src.train import quantize_model, train_model
+import fasttext
 from src.format import format_data
+from typing import Optional
 from os import path
 
 PathType = ClickPath()
@@ -11,13 +13,13 @@ PathType = ClickPath()
 def cli():
     pass
 
-def check_options(input: str, output: str):
-    if not path.exists(input):
+def check_options(input: Optional[str] = None, output: Optional[str] = None):
+    if input and not path.exists(input):
         echo(f"input file `{input}` does not exist.")
         return False
 
-    if path.exists(output) and not confirm(f"output file `{output}` already exists. overwrite?"):
-        echo(f"not overwriting")
+    if output and path.exists(output) and not confirm(f"output file `{output}` already exists. overwrite?"):
+        echo("not overwriting")
         return False
 
     return True
@@ -59,6 +61,20 @@ def format(input: str, output: str):
         return
     format_data(input, output)
 
+@cli.command("test", help="test the model yourself")
+@option("--model", "model_path", type=PathType, default="model_unquantized.bin", help="path to the model to be tested")
+def test(model_path: str):
+    if not check_options(model_path):
+        return
+
+    model = fasttext.load_model(model_path)
+    echo("type `<exit>` or use Ctrl+C to exit")
+    while True:
+        text = prompt(">", prompt_suffix=" ")
+        if text == "<exit>":
+            break
+        label, value = model.predict(str(text))
+        echo(f"{label[0].replace('__label__','')}: {round(value[0], 2)*100}%")
 
 if __name__ == "__main__":
     cli()
