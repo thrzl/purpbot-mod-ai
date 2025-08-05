@@ -2,26 +2,12 @@
 name = "purpbot-mod-ai"
 version = "0.1.0"
 description = "Add your description here"
-authors = [
-    { name = "te", email = "thrzl@icloud.com" }
-]
-dependencies = [
-    "fasttext @ git+https://github.com/facebookresearch/fastText",
-    "click>=8.1.7",
-]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">=3.12.2"
+dependencies = [
+    "click>=8.2.1",
+    "fasttext @ git+https://github.com/facebookresearch/fastText",
+]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.rye]
-managed = true
-dev-dependencies = []
-
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/purpbot_mod_ai"]
+[tool.uv.sources]
+fasttext = { git = "https://github.com/facebookresearch/fastText" }

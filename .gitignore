@@ -1,5 +1,5 @@
 labeled.data
 train.csv
 .DS_Store
-model.bin
-original_model.bin
+*.bin
+__pycache__
