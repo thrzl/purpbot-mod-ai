@@ -27,11 +27,12 @@ def check_options(input: Optional[str] = None, output: Optional[str] = None):
 @cli.command("quantize", help="quantize the model to produce a smaller model.")
 @option("--input", type=PathType, default="model_unquantized.bin", help="path to the model to be quantized")
 @option("--output", type=PathType, default="model_quantized.bin", help="output path of quantized model")
-def quantize(input: str, output: str):
+@option("--cutoff", type=int, default=0, help="cutoff value for quantization")
+def quantize(input: str, output: str, cutoff: int):
     if not check_options(input, output):
         return
 
-    model = quantize_model(input, output)
+    model = quantize_model(input, output, cutoff)
 
     if not confirm("test model?"): return
     example_count, precision, recall = model.test("valid.data")

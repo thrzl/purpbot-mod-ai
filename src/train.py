@@ -1,11 +1,11 @@
 from floret import load_model, train_supervised
 from typing import Optional
 
-def quantize_model(path: str, output_location: str = "model_quantized.bin"):
+def quantize_model(path: str, output_location: str = "model_quantized.bin", cutoff: int = 10000):
     print("quantizing model...")
     model = load_model(path)
 
-    model.quantize("labeled.data", retrain=True, epoch=50, cutoff=10000)
+    model.quantize("labeled.data", retrain=True, epoch=50, cutoff=cutoff)
     model.save_model(output_location)
     print(f"model saved as `{output_location}`")
     return model
