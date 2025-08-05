@@ -6,8 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12.2"
 dependencies = [
     "click>=8.2.1",
-    "fasttext @ git+https://github.com/facebookresearch/fastText",
+    "fasttext>=0.9.3",
+    "numpy<2.0",
 ]
-
-[tool.uv.sources]
-fasttext = { git = "https://github.com/facebookresearch/fastText" }
