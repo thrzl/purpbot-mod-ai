@@ -7,5 +7,5 @@ requires-python = ">=3.12.2"
 dependencies = [
     "click>=8.2.1",
     "fasttext>=0.9.3",
-    "numpy<2.0",
+    "floret>=0.10.5",
 ]

@@ -2,7 +2,7 @@
 
 from click import option, group, echo, confirm, Path as ClickPath, prompt
 from src.train import quantize_model, train_model
-import fasttext
+from floret import load_model
 from src.format import format_data
 from typing import Optional
 from os import path
@@ -67,7 +67,7 @@ def test(model_path: str):
     if not check_options(model_path):
         return
 
-    model = fasttext.load_model(model_path)
+    model = load_model(model_path)
     echo("type `<exit>` or use Ctrl+C to exit")
     while True:
         text = prompt(">", prompt_suffix=" ")

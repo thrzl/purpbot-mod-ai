@@ -1,4 +1,4 @@
-from fasttext import load_model, train_supervised
+from floret import load_model, train_supervised
 from typing import Optional
 
 def quantize_model(path: str, output_location: str = "model_quantized.bin"):

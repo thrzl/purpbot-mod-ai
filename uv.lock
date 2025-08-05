@@ -35,6 +35,22 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/9f/3b/9a10b95eaf565358339162848863197c3f0a29b540ca22b2951df2d66a48/fasttext-0.9.3.tar.gz", hash = "sha256:eb03f2ef6340c6ac9e4398a30026f05471da99381b307aafe2f56e4cd26baaef", size = 73439, upload-time = "2024-06-12T09:44:42.544Z" }
 
 [[package]]
+name = "floret"
+version = "0.10.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c4/a4/0286fed39e374a2237180ee1976444908250f54a01fa8ac198764abdfc59/floret-0.10.5.tar.gz", hash = "sha256:8a94654a87b3335499cd4d14532a6f947a8cc14bd3e28044d7ccf06e99084156", size = 70937, upload-time = "2023-11-04T08:31:29.447Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/46/d0/cb9662031bfaf867ee832d1ec086fa909d79b295f4b06096d93f6fdc13cd/floret-0.10.5-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:87bb2d7a44c6ac2572ca4aeed6a7780f184c2cebe67a6cf3e3b8d3005da360b4", size = 351240, upload-time = "2023-11-04T08:30:55.505Z" },
+    { url = "https://files.pythonhosted.org/packages/79/0a/3fef8be2c708a15208fe9e95ac5a71cf501eba0e95f675ed27d6229493f5/floret-0.10.5-cp312-cp312-macosx_11_0_x86_64.whl", hash = "sha256:96de360cf7f93f21e28641f74c309e3207ceab3856b2cf4867f9135788f02115", size = 373169, upload-time = "2023-11-04T08:30:56.603Z" },
+    { url = "https://files.pythonhosted.org/packages/c6/99/a4b611ac73b1232e5afc7e412ad3e1511ea1971f3608ce359b277a5e9a03/floret-0.10.5-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7c3d1d189fd12f75bc2f4229a5fd4f6eb333f598063609ff050c6a1296568e98", size = 302033, upload-time = "2023-11-04T08:30:57.95Z" },
+    { url = "https://files.pythonhosted.org/packages/2f/68/f5c6dc90acf6ddf8203fb79d5ff4e6f2bf93f1ec4987ff1094f22ce6f2c1/floret-0.10.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dfea32120951b8781c318e5ee9847eb9895ff7a18dd49c5d466ad8951589a0f5", size = 321590, upload-time = "2023-11-04T08:30:59.453Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/25/297f47eab2fb42cb9bea8c1eadeece3bcdd3af185448dd90eed6baa8e106/floret-0.10.5-cp312-cp312-win_amd64.whl", hash = "sha256:e074b9e731504191e366f5f21f2f419a2dc3194d6d17ef26ced7edceefac3f79", size = 243375, upload-time = "2023-11-04T08:31:01.12Z" },
+]
+
+[[package]]
 name = "numpy"
 version = "1.26.4"
 source = { registry = "https://pypi.org/simple" }
@@ -57,14 +73,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "click" },
     { name = "fasttext" },
-    { name = "numpy" },
+    { name = "floret" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "click", specifier = ">=8.2.1" },
     { name = "fasttext", specifier = ">=0.9.3" },
-    { name = "numpy", specifier = "<2.0" },
+    { name = "floret", specifier = ">=0.10.5" },
 ]
 
 [[package]]
